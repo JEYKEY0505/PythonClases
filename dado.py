@@ -1,5 +1,7 @@
 import random
+import collections
 from bokeh.plotting import figure, show
+from bokeh.layouts import row
 def tirar_dados(dados):
     suma_de_dados=[]
     for i in range(dados):
@@ -9,18 +11,21 @@ def tirar_dados(dados):
     return suma_de_dados
 
 def main(dados, repeticiones):
+    
     suma=[]
     for i in range(repeticiones):
         secuencia= tirar_dados(dados)
         suma.append(secuencia)
-    
-    tiros_12=0
-    for tiro in suma:
-        if 12 in tiro:
-            tiros_12+=1
-        probabilidad= tiros_12/repeticiones
-    
-    print(f'La probabilidad de que ambos dados sumen 12 es {probabilidad}')
+    temporal=[]
+    for indice in suma:
+        temporal.append(indice[0])
+    counter1=dict(collections.Counter(temporal))
+    x=[key for key in counter1.keys()]
+    y=[value for value in counter1.values()]
+    print(x)
+    print(y)
+    # fig.line(x, y, line_width=2)
+   
 
 if __name__=='__main__':
     dados=int(input('Cuantos veces va a tirar los dos dados: '))

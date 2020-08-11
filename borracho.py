@@ -9,7 +9,7 @@ class Borracho_tradicional(Borracho):
     def __init__(self, name):
         super().__init__(name)
     def camina(self):
-        return random.choice([(0,1),(0,1), (0,-1), (1,0), (-1,0)])
+        return random.choice([(0,1), (0,-1), (1,0), (-1,0)])
 
 class Coordenada:
     def __init__(self, x, y):
